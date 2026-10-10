@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>POLY Architectural & Construction Services</title>
+<meta name="description" content="POLY designs and builds homes and commercial buildings across Luzon — from bare lot to turnover. Request a free quote.">
+<meta property="og:title" content="POLY Architectural & Construction Services">
+<meta property="og:description" content="From bare lot to turnover. Design-and-build for Filipino homes and businesses.">
+<meta property="og:image" content="assets/img/stage-5-finished.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1a17; --ink-2:#55504a; --paper:#f6f2ec; --paper-2:#ece5da; --line:#d9cfc1;
+  --accent:#d9692b; --accent-ink:#ffffff; --concrete:#8a857d; --dark:#141311;
+  --radius:14px; --max:1180px;
+  --display:"Bricolage Grotesque", system-ui, sans-serif;
+  --body:"Inter", system-ui, sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:68px}
+#build{scroll-margin-top:0}
+body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--display);line-height:1.05;letter-spacing:-.02em}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.4rem;border-radius:999px;font-weight:600;text-decoration:none;border:0;cursor:pointer;font:600 1rem var(--body);transition:transform .2s, background .2s}
+.btn-primary{background:var(--accent);color:var(--accent-ink)}
+.btn-primary:hover{transform:translateY(-2px);background:#c35a20}
+.btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.35);backdrop-filter:blur(6px)}
+.btn-ghost:hover{background:rgba(255,255,255,.22)}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s, box-shadow .3s}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-family:var(--display);font-weight:800;font-size:1.45rem;color:#fff;text-decoration:none;letter-spacing:-.03em}
+.logo span{color:var(--accent)}
+.nav ul{display:flex;gap:1.8rem;list-style:none}
+.nav ul a{color:#fff;text-decoration:none;font-weight:500;font-size:.95rem;opacity:.9}
+.nav ul a:hover{opacity:1}
+.nav .btn{padding:.6rem 1.1rem;font-size:.9rem}
+.nav.scrolled{background:rgba(246,242,236,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--line)}
+.nav.scrolled .logo,.nav.scrolled ul a{color:var(--ink)}
+.menu-btn{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+.nav.scrolled .menu-btn{color:var(--ink)}
+
+/* HERO */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;animation:slowzoom 18s ease-out forwards}
+@keyframes slowzoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.05) 35%,rgba(10,8,6,.78) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:9vh;width:100%}
+.hero h1{font-size:clamp(2.6rem,7vw,5.6rem);font-weight:800;max-width:12ch;margin:.6rem 0 1rem}
+.hero p{max-width:46ch;font-size:1.12rem;opacity:.92;margin-bottom:1.8rem}
+.hero .ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero .stats{display:flex;gap:2.5rem;margin-top:3rem;flex-wrap:wrap}
+.hero .stats b{display:block;font-family:var(--display);font-size:2rem}
+.hero .stats span{font-size:.85rem;opacity:.8}
+.scroll-cue{position:absolute;right:20px;bottom:9vh;z-index:2;writing-mode:vertical-rl;font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;opacity:.75}
+
+/* BUILD PROGRESS */
+.build{position:relative;height:520vh;background:var(--dark)}
+.build-sticky{position:sticky;top:0;height:100vh;overflow:hidden;color:#fff}
+.build-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.04);transition:opacity .9s ease, transform 1.6s ease}
+.build-img.active{opacity:1;transform:scale(1)}
+.build-sticky::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,8,6,.82) 0%,rgba(10,8,6,.35) 45%,rgba(10,8,6,0) 70%),linear-gradient(0deg,rgba(10,8,6,.6),transparent 30%)}
+.build-copy{position:absolute;z-index:3;left:0;right:0;top:50%;transform:translateY(-50%)}
+.build-copy .count{font-family:var(--display);font-size:clamp(4rem,10vw,8rem);font-weight:800;line-height:1;color:var(--accent)}
+.build-copy .count small{font-size:.3em;color:#fff;opacity:.6;margin-left:.3rem}
+.stage-text{position:relative;min-height:12rem;max-width:30rem}
+.stage-text article{position:absolute;inset:0;opacity:0;transform:translateY(18px);transition:opacity .5s, transform .5s}
+.stage-text article.active{opacity:1;transform:none}
+.stage-text h3{font-size:clamp(1.8rem,3.4vw,2.8rem);margin:.4rem 0 .7rem}
+.stage-text p{opacity:.85}
+.stage-text .meta{margin-top:.9rem;font-size:.85rem;opacity:.7}
+.progress{position:absolute;z-index:3;left:0;right:0;bottom:6vh}
+.progress-track{height:3px;background:rgba(255,255,255,.2);border-radius:3px;overflow:hidden}
+.progress-bar{height:100%;width:0;background:var(--accent);transition:width .15s linear}
+.progress-labels{display:flex;justify-content:space-between;margin-top:.8rem;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase}
+.progress-labels span{opacity:.45;transition:opacity .3s, color .3s}
+.progress-labels span.done{opacity:.9}
+.progress-labels span.active{opacity:1;color:var(--accent);font-weight:600}
+
+/* SECTIONS */
+section.pad{padding:110px 0}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
+.section-head h2{font-size:clamp(2.1rem,4.5vw,3.4rem);max-width:16ch;margin-top:.5rem}
+.section-head p{max-width:42ch;color:var(--ink-2)}
+
+.services{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.service{background:var(--paper);padding:2.2rem 2rem;transition:background .25s}
+.service:hover{background:#fff}
+.service .num{font-family:var(--display);font-weight:700;color:var(--accent);font-size:.95rem}
+.service h3{font-size:1.45rem;margin:1.1rem 0 .6rem}
+.service p{color:var(--ink-2);font-size:.96rem}
+.service ul{margin-top:1rem;list-style:none;font-size:.88rem;color:var(--ink-2)}
+.service li{padding:.3rem 0;border-top:1px dashed var(--line)}
+
+/* PROCESS strip */
+.process{background:var(--paper-2)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:s}
+.step{border-top:2px solid var(--ink);padding-top:1.2rem}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:var(--display);font-weight:800;font-size:2.2rem;color:var(--concrete)}
+.step h3{font-size:1.2rem;margin:.4rem 0 .5rem}
+.step p{font-size:.93rem;color:var(--ink-2)}
+
+/* GALLERY */
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:260px;gap:14px}
+.card{position:relative;border-radius:var(--radius);overflow:hidden;cursor:zoom-in;background:#222;border:0;padding:0;text-align:left;color:#fff;font:inherit}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .8s ease}
+.card:hover img,.card:focus-visible img{transform:scale(1.05)}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent 55%)}
+.card .cap{position:absolute;z-index:2;left:1.2rem;right:1.2rem;bottom:1.1rem}
+.card .cap b{display:block;font-family:var(--display);font-size:1.25rem}
+.card .cap span{font-size:.85rem;opacity:.85}
+.g1{grid-column:span 7;grid-row:span 2}.g2{grid-column:span 5}.g3{grid-column:span 5}.g4{grid-column:span 12;grid-row:span 1}
+.lightbox{position:fixed;inset:0;z-index:100;background:rgba(10,8,6,.92);display:none;align-items:center;justify-content:center;padding:20px}
+.lightbox.open{display:flex}
+.lightbox img{max-height:86vh;border-radius:10px}
+.lightbox button{position:absolute;top:18px;right:22px;background:none;border:0;color:#fff;font-size:2.2rem;cursor:pointer}
+
+/* QUOTE */
+.quote{background:var(--dark);color:#fff}
+.quote-grid{display:grid;grid-template-columns:1fr 1.25fr;gap:4rem;align-items:start}
+.quote h2{font-size:clamp(2.2rem,4.5vw,3.4rem);margin:.5rem 0 1rem}
+.quote .lead{opacity:.8;max-width:38ch}
+.contact-list{list-style:none;margin-top:2.2rem;display:grid;gap:1rem}
+.contact-list li{display:flex;gap:.9rem;align-items:flex-start;opacity:.9}
+.contact-list b{display:block;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;opacity:.6;font-weight:600}
+form{background:#1f1d1a;border:1px solid #2f2c28;border-radius:var(--radius);padding:2rem}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.field{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1rem}
+.field label{font-size:.82rem;font-weight:500;opacity:.85}
+.field label .req{color:var(--accent)}
+input,select,textarea{font:inherit;color:#fff;background:#141311;border:1px solid #3a3631;border-radius:10px;padding:.8rem .9rem;width:100%;transition:border-color .2s}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,#aaa 50%),linear-gradient(135deg,#aaa 50%,transparent 50%);background-position:calc(100% - 18px) 55%,calc(100% - 13px) 55%;background-size:5px 5px;background-repeat:no-repeat}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent)}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#e5484d}
+.err{font-size:.78rem;color:#ff8a8d;min-height:0;display:none}
+.field.invalid .err{display:block}
+textarea{min-height:110px;resize:vertical}
+.hp{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.consent{display:flex;gap:.6rem;align-items:flex-start;font-size:.82rem;opacity:.8;margin:.4rem 0 1.3rem}
+.consent input{width:auto;margin-top:.25rem}
+form .btn{width:100%;justify-content:center}
+form .btn[disabled]{opacity:.6;cursor:wait;transform:none}
+.form-status{margin-top:1rem;padding:.9rem 1rem;border-radius:10px;font-size:.92rem;display:none}
+.form-status.ok{display:block;background:rgba(48,164,108,.15);border:1px solid rgba(48,164,108,.5)}
+.form-status.fail{display:block;background:rgba(229,72,77,.12);border:1px solid rgba(229,72,77,.5)}
+
+footer{background:#0e0d0c;color:#a29b92;padding:2.5rem 0;font-size:.85rem}
+footer .wrap{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+footer .logo{font-size:1.1rem}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease, transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .services{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .quote-grid{grid-template-columns:1fr;gap:2.5rem}
+  .gallery{grid-auto-rows:220px}
+  .g1,.g2,.g3,.g4{grid-column:span 12;grid-row:span 1}
+}
+@media (max-width:760px){
+  .nav ul,.nav .nav-cta{display:none}
+  .menu-btn{display:block}
+  .nav.open ul{display:flex;flex-direction:column;gap:0;position:absolute;top:68px;left:0;right:0;background:var(--paper);padding:.5rem 20px 1rem;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+  .nav.open ul a{color:var(--ink);display:block;padding:.8rem 0;border-bottom:1px solid var(--line)}
+  .nav.open{background:var(--paper)}
+  .nav.open .logo,.nav.open .menu-btn{color:var(--ink)}
+  .row{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  section.pad{padding:80px 0}
+  .scroll-cue{display:none}
+  .build-sticky::after{background:linear-gradient(0deg,rgba(10,8,6,.92) 0%,rgba(10,8,6,.55) 55%,rgba(10,8,6,.15) 100%)}
+  .build-copy{top:auto;bottom:16vh;transform:none}
+  .stage-text{min-height:13rem}
+  .progress-labels span{font-size:.6rem}
+  form{padding:1.4rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a href="#top" class="logo">POLY<span>.</span></a>
+    <nav aria-label="Main">
+      <ul id="menu">
+        <li><a href="#build">How We Build</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#quote">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#quote" class="btn btn-primary nav-cta">Request a Quote</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <img src="assets/img/stage-5-finished.jpg" alt="Finished two-storey modern tropical house at sunset" fetchpriority="high">
+  <div class="wrap">
+    <span class="eyebrow">Architectural & Construction Services · Luzon</span>
+    <h1>From bare lot to turnover.</h1>
+    <p>POLY designs and builds homes and commercial spaces made for Philippine weather, budgets and building codes — one team, one contract, one timeline you can see.</p>
+    <div class="ctas">
+      <a href="#quote" class="btn btn-primary">Get a free estimate →</a>
+      <a href="#build" class="btn btn-ghost">See how we build</a>
+    </div>
+    <div class="stats">
+      <div><b>120+</b><span>Projects turned over</span></div>
+      <div><b>14 yrs</b><span>Design-and-build</span></div>
+      <div><b>98%</b><span>Delivered on schedule</span></div>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll ↓</div>
+</section>
+
+<!-- BUILD PROGRESS (scroll-driven) -->
+<section class="build" id="build" aria-label="Construction stages">
+  <div class="build-sticky">
+    <img class="build-img active" src="assets/img/stage-1-lot.jpg" alt="Stage 1: cleared lot staked out for construction">
+    <img class="build-img" src="assets/img/stage-2-foundation.jpg" alt="Stage 2: concrete foundation with rebar columns" loading="lazy">
+    <img class="build-img" src="assets/img/stage-3-frame.jpg" alt="Stage 3: reinforced concrete frame with scaffolding" loading="lazy">
+    <img class="build-img" src="assets/img/stage-4-finishing.jpg" alt="Stage 4: enclosed structure with windows installed" loading="lazy">
+    <img class="build-img" src="assets/img/stage-5-finished.jpg" alt="Stage 5: finished house with landscaping" loading="lazy">
+
+    <div class="build-copy">
+      <div class="wrap">
+        <div class="count"><span id="stageNum">01</span><small>/ 05</small></div>
+        <div class="stage-text">
+          <article class="active">
+            <span class="eyebrow">Site & Permits</span>
+            <h3>Lot survey and layout</h3>
+            <p>Relocation survey, soil test, and staking of the building footprint. We secure your barangay clearance and building permit before a single shovel goes in.</p>
+            <div class="meta">Typical duration · 3–6 weeks</div>
+          </article>
+          <article>
+            <span class="eyebrow">Substructure</span>
+            <h3>Foundation and footings</h3>
+            <p>Excavation, footings and tie beams poured to the structural plans, with column rebar inspected and documented for you at every pour.</p>
+            <div class="meta">Typical duration · 4–6 weeks</div>
+          </article>
+          <article>
+            <span class="eyebrow">Superstructure</span>
+            <h3>Columns, beams and slabs</h3>
+            <p>Reinforced concrete frame designed for typhoon winds and seismic loads, with CHB walls rising floor by floor.</p>
+            <div class="meta">Typical duration · 8–12 weeks</div>
+          </article>
+          <article>
+            <span class="eyebrow">Enclosure & MEPF</span>
+            <h3>Roofing, windows and rough-ins</h3>
+            <p>Roof deck, waterproofing, windows, and electrical, plumbing and fire-protection rough-ins — sealed up before the rainy season.</p>
+            <div class="meta">Typical duration · 6–10 weeks</div>
+          </article>
+          <article>
+            <span class="eyebrow">Turnover</span>
+            <h3>Finishes, landscape and keys</h3>
+            <p>Plaster, paint, tiles, fixtures and landscaping, then a punch-list walkthrough with you. Occupancy permit in hand, keys in yours.</p>
+            <div class="meta">Typical duration · 6–8 weeks</div>
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="progress">
+      <div class="wrap">
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        <div class="progress-labels" id="progressLabels">
+          <span class="active">Lot</span><span>Foundation</span><span>Frame</span><span>Finishing</span><span>Finished</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="pad" id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Services</span>
+        <h2>One team from first sketch to final coat.</h2>
+      </div>
+      <p>Hire us for the whole build or just the part you need. Every engagement starts with a clear scope, a fixed estimate, and a named project engineer.</p>
+    </div>
+    <div class="services reveal">
+      <div class="service">
+        <div class="num">01</div>
+        <h3>Architectural Design</h3>
+        <p>Concept to permit-ready plans, signed and sealed by licensed architects.</p>
+        <ul><li>Floor plans & 3D renders</li><li>Structural & MEPF plans</li><li>Building permit processing</li></ul>
+      </div>
+      <div class="service">
+        <div class="num">02</div>
+        <h3>General Construction</h3>
+        <p>Residential and light commercial builds, managed end-to-end.</p>
+        <ul><li>New houses (1–3 storeys)</li><li>Shophouses & small offices</li><li>Weekly photo progress reports</li></ul>
+      </div>
+      <div class="service">
+        <div class="num">03</div>
+        <h3>Design & Build</h3>
+        <p>Design and construction under one contract — fewer handoffs, one point of accountability.</p>
+        <ul><li>Fixed-price packages</li><li>Bank-loan-ready BOQ</li><li>Single project timeline</li></ul>
+      </div>
+      <div class="service">
+        <div class="num">04</div>
+        <h3>Renovation & Extension</h3>
+        <p>Add a floor, open up a kitchen, or modernize a façade without rebuilding.</p>
+        <ul><li>Second-floor additions</li><li>Kitchen & bath remodels</li><li>Façade upgrades</li></ul>
+      </div>
+      <div class="service">
+        <div class="num">05</div>
+        <h3>Interior Fit-Out</h3>
+        <p>Ceilings, built-ins, lighting and finishes coordinated with the build.</p>
+        <ul><li>Custom cabinetry</li><li>Lighting design</li><li>Furniture sourcing</li></ul>
+      </div>
+      <div class="service">
+        <div class="num">06</div>
+        <h3>Project Management</h3>
+        <p>Already have plans and a contractor? We supervise on your behalf.</p>
+        <ul><li>Cost & schedule control</li><li>Quality inspections</li><li>Contractor billing review</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="pad process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Working with POLY</span>
+        <h2>What happens after you request a quote.</h2>
+      </div>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><h3>Free consultation</h3><p>We call you within one business day to understand your lot, budget and timeline.</p></div>
+      <div class="step"><h3>Site visit & estimate</h3><p>An engineer visits the site and prepares a detailed estimate and bill of quantities.</p></div>
+      <div class="step"><h3>Design & contract</h3><p>Plans are finalized, permits filed, and a fixed-price contract signed.</p></div>
+      <div class="step"><h3>Build & turnover</h3><p>Weekly progress updates until handover and a one-year workmanship warranty.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="pad" id="projects">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Selected Projects</span>
+        <h2>Built for the tropics.</h2>
+      </div>
+      <p>Deep overhangs, cross-ventilation and materials that age well in sun and rain.</p>
+    </div>
+    <div class="gallery reveal">
+      <button class="card g1" data-full="assets/img/project-villa.jpg">
+        <img src="assets/img/project-villa.jpg" alt="Modern tropical villa with stone cladding and slatted gate" loading="lazy">
+        <div class="cap"><b>Casa Alabang</b><span>Residential · 2 storeys · 320 sqm · Muntinlupa</span></div>
+      </button>
+      <button class="card g2" data-full="assets/img/project-interior.jpg">
+        <img src="assets/img/project-interior.jpg" alt="Open-plan living and dining area facing a garden" loading="lazy">
+        <div class="cap"><b>Garden House Interiors</b><span>Fit-out · Living & dining · Tagaytay</span></div>
+      </button>
+      <button class="card g3" data-full="assets/img/project-commercial.jpg">
+        <img src="assets/img/project-commercial.jpg" alt="Three-storey modern commercial building at sunset" loading="lazy">
+        <div class="cap"><b>Malolos Commercial Block</b><span>Commercial · 3 storeys · Bulacan</span></div>
+      </button>
+      <button class="card g4" data-full="assets/img/stage-5-finished.jpg">
+        <img src="assets/img/stage-5-finished.jpg" alt="Finished two-storey house with carport" loading="lazy" style="object-position:center 60%">
+        <div class="cap"><b>Residence San Fernando</b><span>Design & Build · 2 storeys · 260 sqm · Pampanga</span></div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Project image">
+  <button aria-label="Close">×</button>
+  <img src="" alt="">
+</div>
+
+<!-- QUOTE FORM -->
+<section class="pad quote" id="quote">
+  <div class="wrap quote-grid">
+    <div class="reveal">
+      <span class="eyebrow">Request a Quote</span>
+      <h2>Tell us about your project.</h2>
+      <p class="lead">Share a few details and a project engineer will reach out within one business day with next steps and a rough budget range.</p>
+      <ul class="contact-list">
+        <li>📍<div><b>Office</b>Unit 4B, Sample Business Center, Quezon City</div></li>
+        <li>📞<div><b>Phone / Viber</b>+63 900 000 0000</div></li>
+        <li>✉️<div><b>Email</b>hello@poly-build.example</div></li>
+        <li>🕘<div><b>Hours</b>Mon–Sat, 8:00 AM – 5:00 PM</div></li>
+      </ul>
+    </div>
+
+    <form id="quoteForm" class="reveal" novalidate>
+      <div class="row">
+        <div class="field"><label for="fullName">Full name <span class="req">*</span></label>
+          <input id="fullName" name="fullName" autocomplete="name" required>
+          <span class="err">Please enter your name.</span></div>
+        <div class="field"><label for="phone">Mobile number <span class="req">*</span></label>
+          <input id="phone" name="phone" type="tel" placeholder="09XX XXX XXXX" autocomplete="tel" required>
+          <span class="err">Enter a valid PH mobile (e.g. 0917 123 4567).</span></div>
+      </div>
+      <div class="field"><label for="email">Email <span class="req">*</span></label>
+        <input id="email" name="email" type="email" autocomplete="email" required>
+        <span class="err">Enter a valid email address.</span></div>
+      <div class="row">
+        <div class="field"><label for="projectType">Project type <span class="req">*</span></label>
+          <select id="projectType" name="projectType" required>
+            <option value="">Select one</option>
+            <option>New house construction</option>
+            <option>Design & build package</option>
+            <option>Architectural design only</option>
+            <option>Renovation / extension</option>
+            <option>Commercial building</option>
+            <option>Interior fit-out</option>
+            <option>Project management</option>
+          </select>
+          <span class="err">Please choose a project type.</span></div>
+        <div class="field"><label for="location">Project location <span class="req">*</span></label>
+          <input id="location" name="location" placeholder="City / Province" required>
+          <span class="err">Where is the project?</span></div>
+      </div>
+      <div class="row">
+        <div class="field"><label for="lotArea">Lot / floor area (sqm)</label>
+          <input id="lotArea" name="lotArea" type="number" min="0" inputmode="numeric" placeholder="e.g. 150"></div>
+        <div class="field"><label for="budget">Estimated budget</label>
+          <select id="budget" name="budget">
+            <option value="">Not sure yet</option>
+            <option>Below ₱2M</option>
+            <option>₱2M – ₱5M</option>
+            <option>₱5M – ₱10M</option>
+            <option>₱10M – ₱20M</option>
+            <option>Above ₱20M</option>
+          </select></div>
+      </div>
+      <div class="field"><label for="timeline">When do you want to start?</label>
+        <select id="timeline" name="timeline">
+          <option value="">Select one</option>
+          <option>Within 1 month</option>
+          <option>1–3 months</option>
+          <option>3–6 months</option>
+          <option>6+ months / just exploring</option>
+        </select></div>
+      <div class="field"><label for="message">Project details</label>
+        <textarea id="message" name="message" placeholder="Number of floors, bedrooms, plans you already have, anything we should know…"></textarea></div>
+      <!-- honeypot: real people never see or fill this -->
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <label class="consent"><input type="checkbox" id="consent" required> I agree to be contacted about my inquiry, in line with the Data Privacy Act of 2012.</label>
+      <button type="submit" class="btn btn-primary" id="submitBtn">Send my request →</button>
+      <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><span class="logo" style="color:#fff">POLY<span>.</span></span> Architectural & Construction Services</div>
+    <div>© <span id="yr"></span> POLY · Fictional brand — portfolio sample by Khael Mendoza</div>
+  </div>
+</footer>
+
+<script>
+/* ============ CONFIG ============
+   Replace with your n8n Production URL (Webhook node → "Production URL").
+   Leave as-is to run the form in demo mode (no network call). */
+const WEBHOOK_URL = "https://YOUR-N8N-DOMAIN/webhook/poly-quote-request";
+
+/* ---------- Nav ---------- */
+const nav = document.getElementById('nav');
+const menuBtn = document.getElementById('menuBtn');
+const onScrollNav = () => nav.classList.toggle('scrolled', window.scrollY > 40);
+menuBtn.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  menuBtn.setAttribute('aria-expanded', open);
+  menuBtn.textContent = open ? '✕' : '☰';
+});
+document.querySelectorAll('#menu a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open'); menuBtn.textContent = '☰'; menuBtn.setAttribute('aria-expanded', false);
+}));
+
+/* ---------- Scroll-driven build progress ---------- */
+const buildSec = document.getElementById('build');
+const imgs = buildSec.querySelectorAll('.build-img');
+const texts = buildSec.querySelectorAll('.stage-text article');
+const labels = document.querySelectorAll('#progressLabels span');
+const bar = document.getElementById('progressBar');
+const num = document.getElementById('stageNum');
+const STAGES = imgs.length;
+let current = 0;
+
+function updateBuild(){
+  const rect = buildSec.getBoundingClientRect();
+  const scrollable = buildSec.offsetHeight - window.innerHeight;
+  const p = Math.min(Math.max(-rect.top / scrollable, 0), 1);   // 0 → 1 through the section
+  bar.style.width = (p * 100) + '%';
+  const idx = Math.min(STAGES - 1, Math.floor(p * STAGES));
+  if (idx !== current){
+    current = idx;
+    imgs.forEach((el, i) => el.classList.toggle('active', i === idx));
+    texts.forEach((el, i) => el.classList.toggle('active', i === idx));
+    labels.forEach((el, i) => { el.classList.toggle('active', i === idx); el.classList.toggle('done', i < idx); });
+    num.textContent = String(idx + 1).padStart(2, '0');
+  }
+}
+
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking){ requestAnimationFrame(() => { onScrollNav(); updateBuild(); ticking = false; }); ticking = true; }
+}, { passive: true });
+window.addEventListener('resize', updateBuild);
+onScrollNav(); updateBuild();
+
+/* ---------- Reveal on scroll ---------- */
+const io = new IntersectionObserver(entries => entries.forEach(e => {
+  if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+/* ---------- Lightbox ---------- */
+const lb = document.getElementById('lightbox');
+const lbImg = lb.querySelector('img');
+document.querySelectorAll('.card').forEach(c => c.addEventListener('click', () => {
+  lbImg.src = c.dataset.full; lbImg.alt = c.querySelector('img').alt; lb.classList.add('open');
+}));
+const closeLb = () => lb.classList.remove('open');
+lb.addEventListener('click', e => { if (e.target !== lbImg) closeLb(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); });
+
+/* ---------- Quote form → n8n webhook ---------- */
+const form = document.getElementById('quoteForm');
+const statusBox = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+
+const rules = {
+  fullName: v => v.trim().length >= 2,
+  phone: v => /^(\+63|0)9\d{9}$/.test(v.replace(/[\s-]/g, '')),
+  email: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+  projectType: v => v !== '',
+  location: v => v.trim().length >= 2
+};
+
+function validate(){
+  let ok = true;
+  for (const [name, test] of Object.entries(rules)){
+    const el = form.elements[name];
+    const valid = test(el.value);
+    el.closest('.field').classList.toggle('invalid', !valid);
+    if (!valid && ok){ el.focus(); ok = false; }
+  }
+  return ok;
+}
+Object.keys(rules).forEach(n => form.elements[n].addEventListener('input', e => e.target.closest('.field').classList.remove('invalid')));
+
+function showStatus(type, msg){ statusBox.className = 'form-status ' + type; statusBox.textContent = msg; }
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  statusBox.className = 'form-status';
+  if (form.elements.website.value) return;              // bot filled the honeypot — silently drop
+  if (!validate()) return;
+  if (!document.getElementById('consent').checked){ showStatus('fail', 'Please tick the consent box so we can contact you.'); return; }
+
+  const f = form.elements;
+  const payload = {
+    fullName: f.fullName.value.trim(),
+    phone: f.phone.value.replace(/[\s-]/g, ''),
+    email: f.email.value.trim().toLowerCase(),
+    projectType: f.projectType.value,
+    location: f.location.value.trim(),
+    lotAreaSqm: f.lotArea.value ? Number(f.lotArea.value) : null,
+    budget: f.budget.value || 'Not sure yet',
+    timeline: f.timeline.value || null,
+    message: f.message.value.trim(),
+    consent: true,
+    source: 'poly-website',
+    pageUrl: location.href,
+    submittedAt: new Date().toISOString()
+  };
+
+  submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
+  try {
+    if (WEBHOOK_URL.includes('YOUR-N8N-DOMAIN')){
+      console.log('[Demo mode] Payload that would be sent to n8n:', payload);
+      await new Promise(r => setTimeout(r, 800));
+    } else {
+      const res = await fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+    }
+    form.reset();
+    showStatus('ok', `Salamat, ${payload.fullName.split(' ')[0]}! We received your request and will contact you within one business day.`);
+  } catch (err) {
+    console.error(err);
+    showStatus('fail', 'Sorry, something went wrong sending your request. Please try again or message us at +63 900 000 0000.');
+  } finally {
+    submitBtn.disabled = false; submitBtn.textContent = 'Send my request →';
+  }
+});
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
